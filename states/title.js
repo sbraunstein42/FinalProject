@@ -1,8 +1,16 @@
+import { Toolbox } from "../toolbox.js";
+
 export class Title {
 
     canvas;
     pencil;
     changeToGame = false;
+    toolbox = new Toolbox();
+
+    startButtonX = 300;
+    startButtonY = 200;
+    startButtonW = 100;
+    startButtonH = 50;
 
     constructor(canvas, pencil) {
         this.canvas = canvas;
@@ -22,7 +30,12 @@ export class Title {
     }
     
     onClicked(event) {
-        console.log(event);
+        let isHitButton = this.toolbox.isWithinRect(
+            event.offsetX, event.offsetY, 
+            this.startButtonX, this.startButtonY, 
+            this.startButtonW, this.startButtonH
+        );
+        this.changeToGame = isHitButton;
     }
 
     update() {
@@ -31,7 +44,10 @@ export class Title {
         this.pencil.fillText("Title", 10, 50);
 
         this.pencil.fillStyle = "pink";
-        this.pencil.fillRect(200, 200, 100, 50);
+        this.pencil.fillRect(
+            this.startButtonX, this.startButtonY,
+            this.startButtonW, this.startButtonH
+        );
 
         if(this.changeToGame) {
             this.changeToGame = false; //consume it; so we reset the title screen for next time.
