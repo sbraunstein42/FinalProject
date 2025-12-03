@@ -45,6 +45,24 @@ export class Toolbox {
         return color;
     }
 
+    // -----------------------------------------------
+    // Utility function to check distance between two points, a and b
+    getDistance(a, b) {
+        let dx = a.x - b.x;
+        let dy = a.y - b.y;
+        return Math.sqrt(dx*dx + dy*dy);
+    }
+
+    isWithinCircle(circleX, circleY, circleRadius, myX, myY) {
+        let distance = this.getDistance(
+            {x : circleX, y : circleY},
+            {x : myX, y : myY},
+        )
+        let isWithin = distance < circleRadius;
+        console.log(distance + " < " + circleRadius + " .... " + isWithin)
+        return isWithin;
+    }
+
     isWithinRect(pointX, pointY, rectX, rectY, rectW, rectH) {
         if(pointX > rectX + rectW) {
             return false; //too far right

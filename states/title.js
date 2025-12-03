@@ -7,10 +7,10 @@ export class Title {
     changeToGame = false;
     toolbox = new Toolbox();
 
-    startButtonX = 300;
-    startButtonY = 200;
-    startButtonW = 100;
-    startButtonH = 50;
+    startButtonX = 350;
+    startButtonY = 350;
+    startButtonW = 300;
+    startButtonH = 300;
 
     constructor(canvas, pencil) {
         this.canvas = canvas;
@@ -43,11 +43,15 @@ export class Title {
         this.pencil.font = "20px Georgia";
         this.pencil.fillText("Title", 10, 50);
 
-        this.pencil.fillStyle = "pink";
+        this.pencil.fillStyle = "#690604ff";
         this.pencil.fillRect(
             this.startButtonX, this.startButtonY,
             this.startButtonW, this.startButtonH
         );
+
+        this.pencil.fillStyle = "white";
+        this.pencil.font = "50px Impact";
+        this.pencil.fillText("ESCAPE", this.startButtonX + 70, this.startButtonY + 170);
 
         if(this.changeToGame) {
             this.changeToGame = false; //consume it; so we reset the title screen for next time.

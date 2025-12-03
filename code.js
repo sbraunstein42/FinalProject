@@ -2,22 +2,29 @@ import { Game } from "./states/game.js";
 import { GameOver } from "./states/gameOver.js";
 import { Title } from "./states/title.js";
 import { Toolbox } from "./toolbox.js";
+import { StarField } from "./starField/starField.js";
 
 let canvas = document.getElementById("myCanvas");
 let pencil = canvas.getContext("2d"); // This gives you the drawing context, like a pencil
 let toolbox = new Toolbox();
+
+//make a star field!
+let starField = new StarField(canvas, pencil);
 
 //make some states to go to.
 let game = new Game(canvas, pencil);
 let gameOver = new GameOver(canvas, pencil);
 let title = new Title(canvas, pencil);
 
-let state = title;
+let state = game;
 
 function gameLoop() {
 
     pencil.clearRect(0,0, canvas.width, canvas.height);
 
+    starField.drawSpace();
+    starField.drawStars();
+    
     let command = state.update();
 
     if(command == "title") {
@@ -32,4 +39,4 @@ function gameLoop() {
 
 }
 
-setInterval(gameLoop, 1000 / 60);
+setInterval(gameLoop, 10);
