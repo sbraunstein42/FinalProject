@@ -13,14 +13,22 @@ export class Asteroid {
 
     toolbox = new Toolbox();
 
-    constructor(canvas, pencil, radius, speed, difficulty) {
+    constructor(canvas, pencil, radius, speed, difficulty, targetX, targetY) {
         this.pencil = pencil;
         this.canvas = canvas;
         this.radius = radius;
-        this.xSpeed = speed * Math.random();
-        this.ySpeed = speed * Math.random();
-        this.x = 100;
-        this.y = 500;
+
+        //my position
+        this.x = -radius;
+        this.y = this.canvas.height * Math.random();
+
+        //use target to determine the direction it should travel
+        let xDir = (this.x - targetX) * -1 * .001;
+        let yDir = (this.y - targetY) * -1 * .001;
+
+        this.xSpeed = xDir;
+        this.ySpeed = yDir;
+        
         this.difficulty = difficulty;
     }
 
@@ -38,7 +46,7 @@ export class Asteroid {
     }
 
     canSplit() {
-        return true;
+        return Math.random() < this.difficulty;
     }
 
     didIClickOnIt(event) {

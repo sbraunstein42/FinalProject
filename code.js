@@ -6,7 +6,6 @@ import { StarField } from "./starField/starField.js";
 
 let canvas = document.getElementById("myCanvas");
 let pencil = canvas.getContext("2d"); // This gives you the drawing context, like a pencil
-let toolbox = new Toolbox();
 
 //make a star field!
 let starField = new StarField(canvas, pencil);

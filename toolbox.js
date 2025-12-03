@@ -59,7 +59,6 @@ export class Toolbox {
             {x : myX, y : myY},
         )
         let isWithin = distance < circleRadius;
-        console.log(distance + " < " + circleRadius + " .... " + isWithin)
         return isWithin;
     }
 
