@@ -15,7 +15,8 @@ let game = new Game(canvas, pencil);
 let gameOver = new GameOver(canvas, pencil);
 let title = new Title(canvas, pencil);
 
-let state = game;
+let state = title;
+state.enter();
 
 function gameLoop() {
 
@@ -27,12 +28,15 @@ function gameLoop() {
     let command = state.update();
 
     if(command == "title") {
+        title.enter();
         state = title;
     }
     if(command == "gameOver") {
+        gameOver.enter()
         state = gameOver;
     }
     if(command == "game") {
+        game.enter();
         state = game;
     }
 

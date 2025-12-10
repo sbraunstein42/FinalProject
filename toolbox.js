@@ -13,6 +13,22 @@ export class Toolbox {
         return array[randomIndex];
     }
 
+    lerp(a, b, t) {
+        if(a > b) {
+            let temp = a;
+            a = b;
+            b = temp;
+        }
+
+        return a + ((b-a) * t)
+    }
+
+    clamp(n) {
+        if(n > 1) return 1;
+        else if(n < 0) return 0;
+        else return n;
+    }
+
     shuffleArray(array) {
         let shuffled = [];
 
